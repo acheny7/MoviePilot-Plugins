@@ -17,3 +17,9 @@ MoviePilot 插件仓库，提供 PTLGS 幸运转盘插件。
 3. 在插件配置页设置运行参数。
 
 插件不会在仓库中保存 Cookie、账号、运行记录、通知接收者或日志；这些数据只保存在用户自己的 MoviePilot 实例中。
+
+## 插件列表
+
+- `PtlgsLottery`：PTLGS幸运转盘
+- `moyusign`：摸鱼论坛签到
+- `shaobingsign`：LINUX SB 论坛签到
