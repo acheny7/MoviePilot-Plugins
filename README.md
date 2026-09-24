@@ -1,25 +1,70 @@
-# PTLGS幸运转盘
+# MoviePilot Plugins
 
-MoviePilot 插件仓库，提供 PTLGS 幸运转盘插件。
+面向 MoviePilot 的个人插件仓库，提供站点自动化、签到和 PTLGS 幸运转盘功能。
 
-## 添加仓库
+## 添加插件仓库
 
-在 MoviePilot 的插件市场中添加本仓库地址：
+在 MoviePilot 的「插件市场」中添加以下仓库地址：
 
-`https://github.com/acheny7/MoviePilot-Plugins`
+```text
+https://github.com/acheny7/MoviePilot-Plugins
+```
 
-插件 ID：`PtlgsLottery`
-
-## 使用说明
-
-1. 在 MoviePilot 中安装「PTLGS幸运转盘」。
-2. 在 MoviePilot 站点管理中配置并验证 `ptlgs.org` 的站点 Cookie。
-3. 在插件配置页设置运行参数。
-
-插件不会在仓库中保存 Cookie、账号、运行记录、通知接收者或日志；这些数据只保存在用户自己的 MoviePilot 实例中。
+添加后刷新插件市场，即可按插件名称搜索并安装。
 
 ## 插件列表
 
-- `PtlgsLottery`：PTLGS幸运转盘
-- `moyusign`：摸鱼论坛签到
-- `shaobingsign`：LINUX SB 论坛签到
+| 插件 ID | 插件名称 | 版本 | 功能 |
+| --- | --- | --- | --- |
+| `PtlgsLottery` | PTLGS幸运转盘 | 1.2.0 | 自动执行 PTLGS 幸运大转盘，支持暂停、定时和抽奖记录 |
+| `moyusign` | 摸鱼论坛签到 | 1.0.0 | 自动完成摸鱼论坛每日签到，支持自动重试 |
+| `shaobingsign` | LINUX SB 论坛签到 | 1.0.0 | 自动完成 LINUX SB 每日签到，支持代理与自动重试 |
+
+## 使用前提
+
+### PTLGS幸运转盘
+
+1. 在 MoviePilot 的站点管理中添加并验证 `ptlgs.org`。
+2. 确认站点登录 Cookie 有效。
+3. 安装插件后，在配置页设置运行参数和通知选项。
+4. 首次运行建议先使用较小的抽奖批次，确认站点状态和账号额度正常。
+
+### 摸鱼论坛签到
+
+1. 准备有效的摸鱼论坛账号登录信息。
+2. 在插件配置页填写 Cookie，并确认账号仍处于登录状态。
+3. 配置每日执行时间、通知和失败重试选项。
+
+### LINUX SB 论坛签到
+
+1. 准备有效的 LINUX SB 论坛登录 Cookie。
+2. 在插件配置页填写 Cookie。
+3. 如当前网络需要代理，在插件配置页设置代理地址后再启用定时签到。
+
+## 数据与安全
+
+- 本仓库只发布插件源码和插件清单，不包含账号、Cookie、Token、数据库、日志或运行记录。
+- Cookie、运行状态、签到历史和通知配置只保存在用户自己的 MoviePilot 实例中。
+- 不要把真实 Cookie、账号密码或 API 密钥提交到 GitHub、Issue 或公开聊天中。
+- 站点自动签到和幸运转盘属于真实账号操作，请先确认账号授权、站点规则和可用额度。
+- 插件执行结果以目标站点实际返回状态为准；网络超时不代表操作一定没有发生，遇到异常时请先检查站点状态再重试。
+
+## 目录结构
+
+```text
+MoviePilot-Plugins/
+├── package.json
+├── package.v2.json
+├── README.md
+└── plugins/
+    ├── moyusign/
+    │   └── __init__.py
+    ├── ptlgslottery/
+    │   └── __init__.py
+    └── shaobingsign/
+        └── __init__.py
+```
+
+## 免责声明
+
+本仓库仅提供 MoviePilot 插件代码。使用者应自行确认目标站点的服务条款、账号授权范围和自动化操作风险，并对由此产生的账号状态、额度消耗或其他后果负责。
