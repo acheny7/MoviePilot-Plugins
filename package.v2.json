@@ -12,5 +12,33 @@
     "history": {
       "v1.2.0": "初始化公开版本"
     }
+  },
+  "moyusign": {
+    "name": "摸鱼论坛签到",
+    "description": "自动完成摸鱼论坛每日签到，支持自动重试。",
+    "labels": "站点,签到",
+    "version": "1.0.0",
+    "icon": "Moviepilot_A.png",
+    "author": "",
+    "level": 1,
+    "history": {
+      "v1.0.0": "新增摸鱼论坛签到插件"
+    },
+    "v3": false,
+    "release": true
+  },
+  "shaobingsign": {
+    "name": "LINUX SB 论坛签到",
+    "description": "自动完成 LINUX SB 每日签到，支持代理与自动重试。",
+    "labels": "站点,签到",
+    "version": "1.0.0",
+    "icon": "Moviepilot_A.png",
+    "author": "",
+    "level": 1,
+    "history": {
+      "v1.0.0": "新增 LINUX SB 论坛签到插件"
+    },
+    "v3": false,
+    "release": true
   }
 }
