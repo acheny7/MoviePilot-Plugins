@@ -34,9 +34,9 @@ class moyusign(_PluginBase):
     # 插件版本
     plugin_version = "1.0.0"
     # 插件作者
-    plugin_author = ""
+    plugin_author = "gt"
     # 作者主页
-    author_url = ""
+    author_url = "https://github.com/acheny7"
     # 插件配置项ID前缀
     plugin_config_prefix = "moyusign_"
     # 加载顺序
