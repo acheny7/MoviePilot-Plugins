@@ -26,8 +26,8 @@ class PtlgsLottery(_PluginBase):
     plugin_desc = "复用 MoviePilot 站点 Cookie，自动执行 PTLGS 幸运大转盘。"
     plugin_icon = "Moviepilot_A.png"
     plugin_version = "1.2.0"
-    plugin_author = ""
-    author_url = ""
+    plugin_author = "gt"
+    author_url = "https://github.com/acheny7"
     plugin_config_prefix = "ptlgslottery_"
     plugin_order = 30
     auth_level = 1
