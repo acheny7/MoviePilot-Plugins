@@ -53,10 +53,9 @@ https://github.com/acheny7/MoviePilot-Plugins
 
 ```text
 MoviePilot-Plugins/
-├── package.json
 ├── package.v2.json
 ├── README.md
-└── plugins/
+└── plugins.v2/
     ├── moyusign/
     │   └── __init__.py
     ├── ptlgslottery/
