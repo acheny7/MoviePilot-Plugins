@@ -5,7 +5,7 @@
     "labels": "站点,自动化",
     "version": "1.2.0",
     "icon": "Moviepilot_A.png",
-    "author": "gt",
+    "author": "G7",
     "level": 1,
     "history": {
       "v1.2.0": "初始化公开版本"
@@ -17,7 +17,7 @@
     "labels": "站点,签到",
     "version": "1.0.0",
     "icon": "Moviepilot_A.png",
-    "author": "gt",
+    "author": "G7",
     "level": 1,
     "history": {
       "v1.0.0": "新增摸鱼论坛签到插件"
@@ -29,7 +29,7 @@
     "labels": "站点,签到",
     "version": "1.0.0",
     "icon": "Moviepilot_A.png",
-    "author": "gt",
+    "author": "G7",
     "level": 1,
     "history": {
       "v1.0.0": "新增 LINUX SB 论坛签到插件"
