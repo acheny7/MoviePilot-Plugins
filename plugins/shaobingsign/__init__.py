@@ -41,7 +41,7 @@ class shaobingsign(_PluginBase):
     # 插件版本
     plugin_version = "1.0.0"
     # 插件作者
-    plugin_author = "gt"
+    plugin_author = "G7"
     # 作者主页
     author_url = "https://github.com/acheny7"
     # 插件配置项ID前缀
