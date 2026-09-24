@@ -8,7 +8,7 @@
     "author": "",
     "level": 1,
     "v3": false,
-    "release": true,
+    "release": false,
     "history": {
       "v1.2.0": "初始化公开版本"
     }
@@ -25,7 +25,7 @@
       "v1.0.0": "新增摸鱼论坛签到插件"
     },
     "v3": false,
-    "release": true
+    "release": false
   },
   "shaobingsign": {
     "name": "LINUX SB 论坛签到",
@@ -39,6 +39,6 @@
       "v1.0.0": "新增 LINUX SB 论坛签到插件"
     },
     "v3": false,
-    "release": true
+    "release": false
   }
 }
