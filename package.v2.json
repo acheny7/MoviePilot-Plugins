@@ -1,0 +1,16 @@
+{
+  "PtlgsLottery": {
+    "name": "PTLGS幸运转盘",
+    "description": "复用 MoviePilot 站点 Cookie，自动执行 PTLGS 幸运大转盘。",
+    "labels": "站点,自动化",
+    "version": "1.2.0",
+    "icon": "Moviepilot_A.png",
+    "author": "",
+    "level": 1,
+    "v3": false,
+    "release": true,
+    "history": {
+      "v1.2.0": "初始化公开版本"
+    }
+  }
+}
