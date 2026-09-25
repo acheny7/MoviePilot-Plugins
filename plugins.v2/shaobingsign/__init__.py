@@ -1,6 +1,6 @@
 """
 烧饼社区(linux.sb)每日签到插件
-版本: 1.0.0
+版本: 1.0.1
 形态: 服务器端自动签到(BBS)
 说明:
 - 烧饼社区 LINUX.SB 为自研 BBS，签到由站方每日自动记账
@@ -39,7 +39,7 @@ class shaobingsign(_PluginBase):
     # 插件图标
     plugin_icon = ""
     # 插件版本
-    plugin_version = "1.0.0"
+    plugin_version = "1.0.1"
     # 插件作者
     plugin_author = "G7"
     # 作者主页
@@ -321,9 +321,17 @@ class shaobingsign(_PluginBase):
                 name_match = re.search(r'class="user-name"[^>]*>\s*([^<]+?)\s*<', html)
                 if name_match:
                     info["username"] = name_match.group(1).strip()
-                rank_match = re.search(r'class="user-rank"[^>]*>\s*积分\s*([0-9,]+(?:\.[0-9]+)?)', html)
-                if rank_match:
-                    info["points"] = rank_match.group(1).strip().replace(",", "")
+                # 积分展示在站点模板中出现过多种写法：兼容 class 属性顺序、嵌套标签及“积分”在数字后。
+                points_patterns = (
+                    r'class=["\'][^"\']*\buser-rank\b[^"\']*["\'][^>]*>.*?积分\s*[:：]?\s*(?:<[^>]+>\s*)*([0-9,]+(?:\.[0-9]+)?)',
+                    r'(?:积分|points?|balance)\s*[:：]?\s*(?:<[^>]+>\s*)*([0-9,]+(?:\.[0-9]+)?)',
+                    r'([0-9,]+(?:\.[0-9]+)?)\s*(?:积分|points?)',
+                )
+                for pattern in points_patterns:
+                    points_match = re.search(pattern, html, re.IGNORECASE | re.DOTALL)
+                    if points_match:
+                        info["points"] = points_match.group(1).replace(",", "").strip()
+                        break
                 # 连签/累计：取 .daily-checkin-stats 与 .daily-checkin-action 之间的整段数字卡片
                 i_start = html.find('daily-checkin-stats')
                 i_end = html.find('daily-checkin-action')
