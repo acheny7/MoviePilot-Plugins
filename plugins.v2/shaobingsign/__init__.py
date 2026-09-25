@@ -1,6 +1,6 @@
 """
 烧饼社区(linux.sb)每日签到插件
-版本: 1.0.1
+版本: 1.0.2
 形态: 服务器端自动签到(BBS)
 说明:
 - 烧饼社区 LINUX.SB 为自研 BBS，签到由站方每日自动记账
@@ -39,7 +39,7 @@ class shaobingsign(_PluginBase):
     # 插件图标
     plugin_icon = ""
     # 插件版本
-    plugin_version = "1.0.1"
+    plugin_version = "1.0.2"
     # 插件作者
     plugin_author = "G7"
     # 作者主页
@@ -321,16 +321,29 @@ class shaobingsign(_PluginBase):
                 name_match = re.search(r'class="user-name"[^>]*>\s*([^<]+?)\s*<', html)
                 if name_match:
                     info["username"] = name_match.group(1).strip()
-                # 积分展示在站点模板中出现过多种写法：兼容 class 属性顺序、嵌套标签及“积分”在数字后。
+                # 积分展示可能位于用户卡片、data 属性或内嵌 JSON 中；先去标签再解析，避免模板改动导致未知。
                 points_patterns = (
-                    r'class=["\'][^"\']*\buser-rank\b[^"\']*["\'][^>]*>.*?积分\s*[:：]?\s*(?:<[^>]+>\s*)*([0-9,]+(?:\.[0-9]+)?)',
-                    r'(?:积分|points?|balance)\s*[:：]?\s*(?:<[^>]+>\s*)*([0-9,]+(?:\.[0-9]+)?)',
-                    r'([0-9,]+(?:\.[0-9]+)?)\s*(?:积分|points?)',
+                    r"(?:积分|余额|points?|balance)\s*[:：]?\s*(?:<[^>]+>\s*)*([0-9,]+(?:\.[0-9]+)?)",
+                    r"([0-9,]+(?:\.[0-9]+)?)\s*(?:积分|points?)",
+                    r"(?:data-(?:points|balance)|[\"'](?:points|balance)[\"'])\s*[:=]\s*[\"']?([0-9,]+(?:\.[0-9]+)?)",
                 )
-                for pattern in points_patterns:
-                    points_match = re.search(pattern, html, re.IGNORECASE | re.DOTALL)
-                    if points_match:
-                        info["points"] = points_match.group(1).replace(",", "").strip()
+                rank_region = re.search(
+                    r"class=[\"'][^\"']*\buser-rank\b[^\"']*[\"'][^>]*>(.{0,800})",
+                    html, re.IGNORECASE | re.DOTALL,
+                )
+                candidates = []
+                if rank_region:
+                    candidates.append(rank_region.group(1))
+                    candidates.append(re.sub(r'<[^>]+>', ' ', rank_region.group(1)))
+                candidates.append(html)
+                candidates.append(re.sub(r'<[^>]+>', ' ', html))
+                for candidate in candidates:
+                    for pattern in points_patterns:
+                        points_match = re.search(pattern, candidate, re.IGNORECASE | re.DOTALL)
+                        if points_match:
+                            info["points"] = points_match.group(1).replace(",", "").strip()
+                            break
+                    if info["points"] != "未知":
                         break
                 # 连签/累计：取 .daily-checkin-stats 与 .daily-checkin-action 之间的整段数字卡片
                 i_start = html.find('daily-checkin-stats')
