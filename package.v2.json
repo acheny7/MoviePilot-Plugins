@@ -31,11 +31,12 @@
     "name": "LINUX SB 论坛签到",
     "description": "自动完成 LINUX SB 每日签到，支持代理与自动重试。",
     "labels": "站点,签到",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "icon": "Moviepilot_A.png",
     "author": "G7",
     "level": 1,
     "history": {
+      "v1.0.1": "修复积分余额解析，兼容多种页面标记格式",
       "v1.0.0": "新增 LINUX SB 论坛签到插件"
     },
     "v3": false,
